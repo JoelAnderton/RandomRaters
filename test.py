@@ -48,3 +48,17 @@ print(rater3)
 print(rater2)
 print(rater1)
 
+with open('Rater1.csv', mode='w') as write_file:
+    writer = csv.writer(write_file)
+    for studyID in rater1:
+        writer.writerow([studyID])
+
+with open('Rater2.csv', mode='w') as write_file:
+    writer = csv.writer(write_file)
+    for studyID in rater2:
+        writer.writerow([studyID])
+
+with open('Rater3.csv', mode='w') as write_file:
+    writer = csv.writer(write_file)
+    for studyID in rater3:
+        writer.writerow([studyID])

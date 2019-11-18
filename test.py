@@ -10,14 +10,14 @@ with open('StudyIDs.csv', 'r') as f:  # open StudyIDs.csv
 
 
 #list1 = [1,2,3,4,5,6,7,8,9,10]
-
+random.seed(123)
 random.shuffle(studyID_list)
 
 
 len_list = len(studyID_list)
 rater2_percent = 40 / 100
 rater3_percent = 40 / 100
-reliablity_percent = 10 / 100
+reliablity_percent = 5 / 100
 
 reliablity_end_list = int(len_list * reliablity_percent)
 rater2_end_list = int(round(len_list * rater2_percent))
@@ -44,21 +44,31 @@ random.shuffle(rater2)
 rater3 = rater3 + reliability_list
 random.shuffle(rater3)
 
-print(rater3)
-print(rater2)
-print(rater1)
+#print(rater3)
+#print(rater2)
+#print(rater1)
+
+#for i in rater3:
+#    print(i, end='')
 
 with open('Rater1.csv', mode='w') as write_file:
-    writer = csv.writer(write_file)
+    writer = csv.writer(write_file, lineterminator = '\n')
     for studyID in rater1:
         writer.writerow([studyID])
 
 with open('Rater2.csv', mode='w') as write_file:
-    writer = csv.writer(write_file)
+    writer = csv.writer(write_file, lineterminator = '\n')
     for studyID in rater2:
         writer.writerow([studyID])
 
 with open('Rater3.csv', mode='w') as write_file:
-    writer = csv.writer(write_file)
+    writer = csv.writer(write_file, lineterminator = '\n')
     for studyID in rater3:
         writer.writerow([studyID])
+
+with open('ReliabilityList.csv', mode='w') as write_file:
+    writer = csv.writer(write_file, lineterminator = '\n')
+    for studyID in reliability_list:
+        writer.writerow([studyID])
+
+print('Done!')

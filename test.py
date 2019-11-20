@@ -53,21 +53,25 @@ random.shuffle(rater3)
 
 with open('Rater1.csv', mode='w') as write_file:
     writer = csv.writer(write_file, lineterminator = '\n')
+    writer.writerow(['StudyID'])
     for studyID in rater1:
         writer.writerow([studyID])
 
 with open('Rater2.csv', mode='w') as write_file:
     writer = csv.writer(write_file, lineterminator = '\n')
+    writer.writerow(['StudyID'])
     for studyID in rater2:
         writer.writerow([studyID])
 
 with open('Rater3.csv', mode='w') as write_file:
     writer = csv.writer(write_file, lineterminator = '\n')
+    writer.writerow(['StudyID'])
     for studyID in rater3:
         writer.writerow([studyID])
 
 with open('ReliabilityList.csv', mode='w') as write_file:
     writer = csv.writer(write_file, lineterminator = '\n')
+    writer.writerow(['StudyID'])
     for studyID in reliability_list:
         writer.writerow([studyID])
 

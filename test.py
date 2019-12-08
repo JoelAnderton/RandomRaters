@@ -103,6 +103,13 @@ def randomize(studyID_list, rater2_percent, rater3_percent, reliability_percent)
             writer.writerow([studyID])
 
     print('Done!')
+
+def callback(*args):
+    new_rater1 = 100 - (rater2 + rater3 + rater4 + rater5 + rater6 + rater7 + rater8 + rater9 + rater10)
+    rater1_percent.configure(state='enable')
+    rater1.set(new_rater1)
+    rater1_percent.configure(state='disable')
+
 def get_about():
     pass
 
@@ -113,7 +120,7 @@ root.title('Random Raters v. 1.0')
 root.geometry('450x450+500+200')
 
 studyID_path = StringVar()
-rater1 = StringVar()
+rater1 = IntVar()
 rater2 = IntVar()
 rater3 = IntVar()
 rater4 = IntVar()
@@ -237,6 +244,16 @@ reliabilityLabel.pack(side=LEFT)
 reliabilityEntry = Entry(frame, textvariable=reliability_percent, width=3)
 reliabilityEntry.pack(side=LEFT)
 frame.pack()
+
+rater2.trace("w", callback)
+rater3.trace("w", callback)
+rater4.trace("w", callback)
+rater5.trace("w", callback)
+rater6.trace("w", callback)
+rater7.trace("w", callback)
+rater8.trace("w", callback)
+rater9.trace("w", callback)
+rater10.trace("w", callback)
 
 # Submit button
 frame = Frame()

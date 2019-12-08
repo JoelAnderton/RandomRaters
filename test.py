@@ -113,6 +113,7 @@ root.title('Random Raters v. 1.0')
 root.geometry('450x450+500+200')
 
 studyID_path = StringVar()
+rater1 = StringVar()
 rater2 = IntVar()
 rater3 = IntVar()
 rater4 = IntVar()
@@ -141,11 +142,21 @@ getDataButton1 = Button(frame, text='Browse...', command=get_studyID_list, width
 getDataButton1.pack(side=LEFT)
 frame.pack()
 
+# Rater1
+frame = Frame(root)
+rater1Label = Label(frame, text='Rater1 Percentage')
+rater1Label.pack(side=LEFT)
+rater1_percent = Entry(frame, textvariable=rater1, width=3, state='disabled')
+rater1.set(50)
+rater1_percent.pack(side=RIGHT)
+frame.pack()
+
 # Rater2 Percentage
 frame = Frame(root)
 rater2Label = Label(frame, text='Rater2 Percentage:')
 rater2Label.pack(side=LEFT)
 rater2Entry = Entry(frame, textvariable=rater2, width=3)
+rater2.set(50)
 rater2Entry.pack(side=LEFT)
 frame.pack()
 

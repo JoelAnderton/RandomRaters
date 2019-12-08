@@ -1,3 +1,14 @@
+###################################################################################################################
+# Randmom Raters
+# Created by: Joel Anderton
+# Created date: 12/8/2019
+# Purpose: To take a list of StudyIDs and randomize it into separate lists for individual lists for raters
+#         - The main list is divided up percentage wise for each rater
+#         - There is an option for inter-rater reliabilty as a percentage of the total list
+#
+###################################################################################################################
+
+
 import random
 
 import csv

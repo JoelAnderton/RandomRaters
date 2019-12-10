@@ -73,7 +73,7 @@ def randomize(event=None):
                 with open('ReliabilityList.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
-                    for studyID in reliability_list:
+                    for studyID in sorted(reliability_list):
                         writer.writerow([studyID])
                 len_list = len(studyID_list)
 

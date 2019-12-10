@@ -24,7 +24,11 @@ def get_studyID_list(event=None):
     csv_path = askopenfilename()
     pathEntry.insert(END, csv_path)
 
+
+def randomize(event=None):
+    """Take the studyID_list and randomize it."""
     # opens .csv file
+    studyID_list = []
     with open(pathEntry.get(), 'r') as f:
         reader = csv.reader(f, delimiter=',')  # reads in .csv file
         next(reader)
@@ -32,9 +36,6 @@ def get_studyID_list(event=None):
             studyID = rowDict[0].upper()  # if the StudyID is typed in lowercase, this changes it to uppercase
             studyID_list.append(studyID)
 
-
-def randomize(event=None):
-    """Take the studyID_list and randomize it."""
     # Check raters total 100%
     total_raters = update_rater1()
     if total_raters < 1 or total_raters > 99:
@@ -287,7 +288,6 @@ rater8 = IntVar()
 rater9 = IntVar()
 rater10 = IntVar()
 reliability_percent = IntVar()
-
 
 # Title
 frame = Frame(root)

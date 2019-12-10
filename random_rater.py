@@ -35,216 +35,230 @@ def get_studyID_list(event=None):
 
 def randomize(event=None):
     """Take the studyID_list and randomize it."""
-    reliability = int(reliabilityEntry.get())
-    rater2 = int(rater2Entry.get())
-    rater3 = int(rater3Entry.get())
-    rater4 = int(rater4Entry.get())
-    rater5 = int(rater5Entry.get())
-    rater6 = int(rater6Entry.get())
-    rater7 = int(rater7Entry.get())
-    rater8 = int(rater8Entry.get())
-    rater9 = int(rater9Entry.get())
-    rater10 = int(rater10Entry.get())
+    # Check raters total 100%
+    total_raters = update_rater1()
+    if total_raters < 1 or total_raters > 99:
+        messagebox.showwarning('Error', 'Total of all percentages do not total 100%')
+    else:
+        # Check reliability < 100%
+        if check_reliability() == 1:
 
-    reliability_list = []
+            reliability = int(reliabilityEntry.get())
+            rater2 = int(rater2Entry.get())
+            rater3 = int(rater3Entry.get())
+            rater4 = int(rater4Entry.get())
+            rater5 = int(rater5Entry.get())
+            rater6 = int(rater6Entry.get())
+            rater7 = int(rater7Entry.get())
+            rater8 = int(rater8Entry.get())
+            rater9 = int(rater9Entry.get())
+            rater10 = int(rater10Entry.get())
 
-    # Shuffle list
-    random.seed(123)
-    random.shuffle(studyID_list)
+            reliability_list = []
 
-    # Find List Length
-    len_list = len(studyID_list)
+            # Shuffle list
+            random.seed(123)
+            random.shuffle(studyID_list)
 
-    # Create reliability list
-    if reliability >= 1:
-        reliability_percent = reliability / 100
-        reliability_end_list = int(len_list * reliability_percent)
-        for i in studyID_list[:reliability_end_list]:
-            reliability_list.append(i)
+            # Find List Length
+            len_list = len(studyID_list)
 
-        with open('ReliabilityList.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in reliability_list:
-                writer.writerow([studyID])
+            # Create reliability list
+            if reliability >= 1:
+                reliability_percent = reliability / 100
+                reliability_end_list = int(len_list * reliability_percent)
+                for i in studyID_list[:reliability_end_list]:
+                    reliability_list.append(i)
 
-    # Create rater2 list
-    if rater2 >= 1:
-        rater2_percent = rater2 / 100
-        rater2_end_list = int(round(len_list * rater2_percent))
-        rater2_list = []
-        for i in studyID_list[:rater2_end_list]:
-            rater2_list.append(studyID_list.pop())
+                with open('ReliabilityList.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in reliability_list:
+                        writer.writerow([studyID])
 
-    # Create rater 3 list
-    if rater3 >= 1:
-        rater3_percent = rater3 / 100
-        rater3_end_list = int(round(len_list * rater3_percent))
-        rater3_list = []
-        for i in studyID_list[:rater3_end_list]:
-            rater3_list.append(studyID_list.pop())
+            # Create rater2 list
+            if rater2 >= 1:
+                rater2_percent = rater2 / 100
+                rater2_end_list = int(round(len_list * rater2_percent))
+                rater2_list = []
+                for i in studyID_list[:rater2_end_list]:
+                    rater2_list.append(studyID_list.pop())
 
-    # Create rater 4 list
-    if rater4 >= 1:
-        rater4_percent = rater4 / 100
-        rater4_end_list = int(round(len_list * rater4_percent))
-        rater4_list = []
-        for i in studyID_list[:rater4_end_list]:
-            rater4_list.append(studyID_list.pop())
+            # Create rater 3 list
+            if rater3 >= 1:
+                rater3_percent = rater3 / 100
+                rater3_end_list = int(round(len_list * rater3_percent))
+                rater3_list = []
+                for i in studyID_list[:rater3_end_list]:
+                    rater3_list.append(studyID_list.pop())
 
-    # Create rater 5 list
-    if rater5 >= 1:
-        rater5_percent = rater5 / 100
-        rater5_end_list = int(round(len_list * rater5_percent))
-        rater5_list = []
-        for i in studyID_list[:rater5_end_list]:
-            rater5_list.append(studyID_list.pop())
+            # Create rater 4 list
+            if rater4 >= 1:
+                rater4_percent = rater4 / 100
+                rater4_end_list = int(round(len_list * rater4_percent))
+                rater4_list = []
+                for i in studyID_list[:rater4_end_list]:
+                    rater4_list.append(studyID_list.pop())
 
-    # Create rater 6 list
-    if rater6 >= 1:
-        rater6_percent = rater6 / 100
-        rater6_end_list = int(round(len_list * rater6_percent))
-        rater6_list = []
-        for i in studyID_list[:rater6_end_list]:
-            rater6_list.append(studyID_list.pop())
+            # Create rater 5 list
+            if rater5 >= 1:
+                rater5_percent = rater5 / 100
+                rater5_end_list = int(round(len_list * rater5_percent))
+                rater5_list = []
+                for i in studyID_list[:rater5_end_list]:
+                    rater5_list.append(studyID_list.pop())
 
-    # Create rater 7 list
-    if rater7 >= 1:
-        rater7_percent = rater7 / 100
-        rater7_end_list = int(round(len_list * rater7_percent))
-        rater7_list = []
-        for i in studyID_list[:rater7_end_list]:
-            rater7_list.append(studyID_list.pop())
+            # Create rater 6 list
+            if rater6 >= 1:
+                rater6_percent = rater6 / 100
+                rater6_end_list = int(round(len_list * rater6_percent))
+                rater6_list = []
+                for i in studyID_list[:rater6_end_list]:
+                    rater6_list.append(studyID_list.pop())
 
-    # Create rater 8 list
-    if rater8 >= 1:
-        rater8_percent = rater8 / 100
-        rater8_end_list = int(round(len_list * rater8_percent))
-        rater8_list = []
-        for i in studyID_list[:rater8_end_list]:
-            rater8_list.append(studyID_list.pop())
+            # Create rater 7 list
+            if rater7 >= 1:
+                rater7_percent = rater7 / 100
+                rater7_end_list = int(round(len_list * rater7_percent))
+                rater7_list = []
+                for i in studyID_list[:rater7_end_list]:
+                    rater7_list.append(studyID_list.pop())
 
-    # Create rater 9 list
-    if rater9 >= 1:
-        rater9_percent = rater9 / 100
-        rater9_end_list = int(round(len_list * rater9_percent))
-        rater9_list = []
-        for i in studyID_list[:rater9_end_list]:
-            rater9_list.append(studyID_list.pop())
+            # Create rater 8 list
+            if rater8 >= 1:
+                rater8_percent = rater8 / 100
+                rater8_end_list = int(round(len_list * rater8_percent))
+                rater8_list = []
+                for i in studyID_list[:rater8_end_list]:
+                    rater8_list.append(studyID_list.pop())
 
-    # Create rater 10 list
-    if rater10 >= 1:
-        rater10_percent = rater10 / 100
-        rater10_end_list = int(round(len_list * rater10_percent))
-        rater10_list = []
-        for i in studyID_list[:rater10_end_list]:
-            rater10_list.append(studyID_list.pop())
+            # Create rater 9 list
+            if rater9 >= 1:
+                rater9_percent = rater9 / 100
+                rater9_end_list = int(round(len_list * rater9_percent))
+                rater9_list = []
+                for i in studyID_list[:rater9_end_list]:
+                    rater9_list.append(studyID_list.pop())
 
-    # Rater1 List - csv
-    rater1 = sorted(studyID_list + reliability_list)
-    with open('Rater1.csv', mode='w') as write_file:
-        writer = csv.writer(write_file, lineterminator='\n')
-        writer.writerow(['StudyID'])
-        for studyID in rater1:
-            writer.writerow([studyID])
+            # Create rater 10 list
+            if rater10 >= 1:
+                rater10_percent = rater10 / 100
+                rater10_end_list = int(round(len_list * rater10_percent))
+                rater10_list = []
+                for i in studyID_list[:rater10_end_list]:
+                    rater10_list.append(studyID_list.pop())
 
-    # Rater2 List - csv
-    if rater2 >= 1:
-        rater2_list_all = sorted(rater2_list + reliability_list)
-        with open('Rater2.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater2_list_all:
-                writer.writerow([studyID])
+            # Rater1 List - csv
+            rater1 = sorted(studyID_list + reliability_list)
+            with open('Rater1.csv', mode='w') as write_file:
+                writer = csv.writer(write_file, lineterminator='\n')
+                writer.writerow(['StudyID'])
+                for studyID in rater1:
+                    writer.writerow([studyID])
 
-    # Rater3 List - csv
-    if rater3 >= 1:
-        rater3_list_all = sorted(rater3_list + reliability_list)
-        with open('Rater3.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater3_list_all:
-                writer.writerow([studyID])
+            # Rater2 List - csv
+            if rater2 >= 1:
+                rater2_list_all = sorted(rater2_list + reliability_list)
+                with open('Rater2.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater2_list_all:
+                        writer.writerow([studyID])
 
-    # Rater4 List - csv
-    if rater4 >= 1:
-        rater4_list_all = sorted(rater4_list + reliability_list)
-        with open('Rater4.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater4_list_all:
-                writer.writerow([studyID])
+            # Rater3 List - csv
+            if rater3 >= 1:
+                rater3_list_all = sorted(rater3_list + reliability_list)
+                with open('Rater3.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater3_list_all:
+                        writer.writerow([studyID])
 
-    # Rater5 List - csv
-    if rater5 >= 1:
-        rater5_list_all = sorted(rater5_list + reliability_list)
-        with open('Rater5.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater5_list_all:
-                writer.writerow([studyID])
+            # Rater4 List - csv
+            if rater4 >= 1:
+                rater4_list_all = sorted(rater4_list + reliability_list)
+                with open('Rater4.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater4_list_all:
+                        writer.writerow([studyID])
 
-    # Rater6 List - csv
-    if rater6 >= 1:
-        rater6_list_all = sorted(rater6_list + reliability_list)
-        with open('Rater6.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater6_list_all:
-                writer.writerow([studyID])
+            # Rater5 List - csv
+            if rater5 >= 1:
+                rater5_list_all = sorted(rater5_list + reliability_list)
+                with open('Rater5.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater5_list_all:
+                        writer.writerow([studyID])
 
-    # Rater7 List - csv
-    if rater7 >= 1:
-        rater7_list_all = sorted(rater7_list + reliability_list)
-        with open('Rater7.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater7_list_all:
-                writer.writerow([studyID])
+            # Rater6 List - csv
+            if rater6 >= 1:
+                rater6_list_all = sorted(rater6_list + reliability_list)
+                with open('Rater6.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater6_list_all:
+                        writer.writerow([studyID])
 
-    # Rater8 List - csv
-    if rater8 >=1:
-        rater8_list_all = sorted(rater8_list + reliability_list)
-        with open('Rater8.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater8_list_all:
-                writer.writerow([studyID])
+            # Rater7 List - csv
+            if rater7 >= 1:
+                rater7_list_all = sorted(rater7_list + reliability_list)
+                with open('Rater7.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater7_list_all:
+                        writer.writerow([studyID])
 
-    # Rater9 List - csv
-    if rater9 >=1:
-        rater9_list_all = sorted(rater9_list + reliability_list)
-        with open('Rater9.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater9_list_all:
-                writer.writerow([studyID])
+            # Rater8 List - csv
+            if rater8 >=1:
+                rater8_list_all = sorted(rater8_list + reliability_list)
+                with open('Rater8.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater8_list_all:
+                        writer.writerow([studyID])
 
-    # Rater10 List - csv
-    if rater10 >=1:
-        rater10_list_all = sorted(rater10_list + reliability_list)
-        with open('Rater10.csv', mode='w') as write_file:
-            writer = csv.writer(write_file, lineterminator='\n')
-            writer.writerow(['StudyID'])
-            for studyID in rater10_list_all:
-                writer.writerow([studyID])
+            # Rater9 List - csv
+            if rater9 >=1:
+                rater9_list_all = sorted(rater9_list + reliability_list)
+                with open('Rater9.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater9_list_all:
+                        writer.writerow([studyID])
 
-    messagebox.showinfo('Done', 'Done!')
+            # Rater10 List - csv
+            if rater10 >=1:
+                rater10_list_all = sorted(rater10_list + reliability_list)
+                with open('Rater10.csv', mode='w') as write_file:
+                    writer = csv.writer(write_file, lineterminator='\n')
+                    writer.writerow(['StudyID'])
+                    for studyID in rater10_list_all:
+                        writer.writerow([studyID])
+
+            messagebox.showinfo('Done', 'Done!')
+
+
+def update_rater1():
+    new_rater1 = 100 - (rater2.get() + rater3.get() + rater4.get() + rater5.get() + rater6.get() + rater7.get() +
+                        rater8.get() + rater9.get() + rater10.get())
+    return new_rater1
+
+
+def check_reliability():
+    if reliability_percent.get() < 0 or reliability_percent.get() > 100:
+        messagebox.showwarning('Error', 'Reliability percent is not between 0 and 100%')
+        return 0
+    else:
+        return 1
 
 
 def callback(*args):
-    # print("variable change")
-    new_rater1 = 100 - (rater2.get() + rater3.get() + rater4.get() + rater5.get() + rater6.get() + rater7.get() +
-                        rater8.get() + rater9.get() + rater10.get())
-    if new_rater1 < 1 or new_rater1 > 99:
-        messagebox.showwarning('Error', 'Total of all percentages do not total 100%')
-
+    new_rater1 = update_rater1()
     rater1_percent.configure(state='normal')
     rater1.set(new_rater1)
     rater1_percent.configure(state='disable')
-
-    if reliability_percent.get() < 0 or reliability_percent.get() > 100:
-        messagebox.showwarning('Error', 'Reliability percent is not between 0 and 100%')
 
 
 def get_about():

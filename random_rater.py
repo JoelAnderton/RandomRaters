@@ -1,7 +1,7 @@
 ###################################################################################################################
 # Random Raters
 # Created by: Joel Anderton
-# Created date: 12/8/2019
+# Created date: 12/9/2019
 # Purpose: To take a list of StudyIDs and randomize it into separate lists for individual lists for raters
 #         - The main list is divided up percentage wise for each rater
 #         - There is an option for inter-rater reliability as a percentage of the total list
@@ -268,7 +268,7 @@ def callback(*args):
 
 def get_about():
     messagebox.showinfo('About', '''    Created by: Joel Anderton 
-        Created date: 12/8/2019
+        Created date: 12/9/2019
 
         Random Raters
         version: 1.0''')

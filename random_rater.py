@@ -68,13 +68,14 @@ def randomize(event=None):
                 reliability_percent = reliability / 100
                 reliability_end_list = int(len_list * reliability_percent)
                 for i in studyID_list[:reliability_end_list]:
-                    reliability_list.append(i)
+                    reliability_list.append(studyID_list.pop())
 
                 with open('ReliabilityList.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
                     for studyID in reliability_list:
                         writer.writerow([studyID])
+                len_list = len(studyID_list)
 
             # Create rater2 list
             if rater2 >= 1:
@@ -149,7 +150,7 @@ def randomize(event=None):
                     rater10_list.append(studyID_list.pop())
 
             # Rater1 List - csv
-            rater1 = sorted(studyID_list + reliability_list)
+            rater1 = sorted(list(set(studyID_list + reliability_list)))
             with open('Rater1.csv', mode='w') as write_file:
                 writer = csv.writer(write_file, lineterminator='\n')
                 writer.writerow(['StudyID'])
@@ -158,7 +159,7 @@ def randomize(event=None):
 
             # Rater2 List - csv
             if rater2 >= 1:
-                rater2_list_all = sorted(rater2_list + reliability_list)
+                rater2_list_all = sorted(list(set(rater2_list + reliability_list)))
                 with open('Rater2.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -167,7 +168,7 @@ def randomize(event=None):
 
             # Rater3 List - csv
             if rater3 >= 1:
-                rater3_list_all = sorted(rater3_list + reliability_list)
+                rater3_list_all = sorted(list(set(rater3_list + reliability_list)))
                 with open('Rater3.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -176,7 +177,7 @@ def randomize(event=None):
 
             # Rater4 List - csv
             if rater4 >= 1:
-                rater4_list_all = sorted(rater4_list + reliability_list)
+                rater4_list_all = sorted(list(set(rater4_list + reliability_list)))
                 with open('Rater4.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -185,7 +186,7 @@ def randomize(event=None):
 
             # Rater5 List - csv
             if rater5 >= 1:
-                rater5_list_all = sorted(rater5_list + reliability_list)
+                rater5_list_all = sorted(list(set(rater5_list + reliability_list)))
                 with open('Rater5.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -194,7 +195,7 @@ def randomize(event=None):
 
             # Rater6 List - csv
             if rater6 >= 1:
-                rater6_list_all = sorted(rater6_list + reliability_list)
+                rater6_list_all = sorted(list(set(rater6_list + reliability_list)))
                 with open('Rater6.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -203,7 +204,7 @@ def randomize(event=None):
 
             # Rater7 List - csv
             if rater7 >= 1:
-                rater7_list_all = sorted(rater7_list + reliability_list)
+                rater7_list_all = sorted(list(set(rater7_list + reliability_list)))
                 with open('Rater7.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -212,7 +213,7 @@ def randomize(event=None):
 
             # Rater8 List - csv
             if rater8 >=1:
-                rater8_list_all = sorted(rater8_list + reliability_list)
+                rater8_list_all = sorted(list(set(rater8_list + reliability_list)))
                 with open('Rater8.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -221,7 +222,7 @@ def randomize(event=None):
 
             # Rater9 List - csv
             if rater9 >=1:
-                rater9_list_all = sorted(rater9_list + reliability_list)
+                rater9_list_all = sorted(list(set(rater9_list + reliability_list)))
                 with open('Rater9.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])
@@ -230,7 +231,7 @@ def randomize(event=None):
 
             # Rater10 List - csv
             if rater10 >=1:
-                rater10_list_all = sorted(rater10_list + reliability_list)
+                rater10_list_all = sorted(list(set(rater10_list + reliability_list)))
                 with open('Rater10.csv', mode='w') as write_file:
                     writer = csv.writer(write_file, lineterminator='\n')
                     writer.writerow(['StudyID'])

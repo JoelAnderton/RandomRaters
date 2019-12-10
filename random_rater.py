@@ -76,7 +76,7 @@ def randomize(event=None):
                     writer.writerow(['StudyID'])
                     for studyID in sorted(reliability_list):
                         writer.writerow([studyID])
-                len_list = len(studyID_list)
+                len_list = len(studyID_list) #reset list length
 
             # Create rater2 list
             if rater2 >= 1:
@@ -243,12 +243,14 @@ def randomize(event=None):
 
 
 def update_rater1():
+    """Updates Rater1 percentage"""
     new_rater1 = 100 - (rater2.get() + rater3.get() + rater4.get() + rater5.get() + rater6.get() + rater7.get() +
                         rater8.get() + rater9.get() + rater10.get())
     return new_rater1
 
 
 def check_reliability():
+    """Check that the Reliability percentage is between 0 and 100%"""
     if reliability_percent.get() < 0 or reliability_percent.get() > 100:
         messagebox.showwarning('Error', 'Reliability percent is not between 0 and 100%')
         return 0
@@ -257,6 +259,7 @@ def check_reliability():
 
 
 def callback(*args):
+    """Automatically updates Rater1 Percentage when the percentages of other raters changes"""
     new_rater1 = update_rater1()
     rater1_percent.configure(state='normal')
     rater1.set(new_rater1)

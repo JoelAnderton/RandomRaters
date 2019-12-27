@@ -31,7 +31,8 @@ def randomize(event=None):
     studyID_list = []
     with open(pathEntry.get(), 'r') as f:
         reader = csv.reader(f, delimiter=',')  # reads in .csv file
-        next(reader)
+        if header.get() == True:
+            next(reader)
         for rowDict in reader:
             studyID = rowDict[0].upper()  # if the StudyID is typed in lowercase, this changes it to uppercase
             studyID_list.append(studyID)

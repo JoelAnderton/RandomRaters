@@ -277,7 +277,7 @@ def get_about():
 # Creates main window
 root = Tk()
 root.title('Random Raters v. 1.0')
-root.geometry('450x450+500+200')
+root.geometry('450x500+500+200')
 
 studyID_path = StringVar()
 header = BooleanVar()

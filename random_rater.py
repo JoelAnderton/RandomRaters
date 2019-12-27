@@ -272,12 +272,12 @@ def get_about():
         Created date: 12/9/2019
 
         Random Raters
-        version: 1.0''')
+        version: 1.1''')
 
 
 # Creates main window
 root = Tk()
-root.title('Random Raters v. 1.0')
+root.title('Random Raters v. 1.1')
 root.geometry('450x500+500+200')
 
 studyID_path = StringVar()

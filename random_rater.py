@@ -280,6 +280,7 @@ root.title('Random Raters v. 1.0')
 root.geometry('450x450+500+200')
 
 studyID_path = StringVar()
+header = BooleanVar()
 rater1 = IntVar()
 rater2 = IntVar()
 rater3 = IntVar()
@@ -306,6 +307,12 @@ pathEntry = Entry(frame, textvariable=studyID_path)
 pathEntry.pack(side=LEFT)
 getDataButton1 = Button(frame, text='Browse...', command=get_studyID_list, width=10)
 getDataButton1.pack(side=LEFT)
+frame.pack()
+
+# Header checkbox
+frame = Frame(root)
+headerCheckBut = Checkbutton(frame, text='Header in first row?', variable=header)
+headerCheckBut.pack()
 frame.pack()
 
 # Rater1

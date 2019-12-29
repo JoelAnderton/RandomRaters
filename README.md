@@ -1,5 +1,5 @@
 # RandomRaters
-Assign to 10 raters each a random list of StudyIDs based on a large list of unknown size. 
+Assign up to 10 raters each a random list of StudyIDs based on a large list of unknown size. 
 
 Each list should be unique and not repeat any StudyIDs.
 

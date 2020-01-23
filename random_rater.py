@@ -278,7 +278,7 @@ def get_about():
 # Creates main window
 root = Tk()
 root.title('Random Raters v. 1.1')
-root.geometry('450x500+500+200')
+root.geometry('450x550+500+200')
 
 studyID_path = StringVar()
 header = BooleanVar()
@@ -292,6 +292,7 @@ rater7 = IntVar()
 rater8 = IntVar()
 rater9 = IntVar()
 rater10 = IntVar()
+reliabilityType = IntVar()
 reliability_percent = IntVar()
 
 # Title
@@ -409,6 +410,19 @@ frame.pack()
 frame = Frame(root)
 lines = Label(frame, text='')
 lines.pack()
+frame.pack()
+
+# Reliability type
+frame = Frame(root)
+reliabilityTypeLabel = Label(frame, text='Choose Reliability Type:')
+reliabilityTypeLabel.pack(side=LEFT)
+frame.pack()
+
+frame = Frame(root)
+radio_same = Radiobutton(frame, text="Same Across All", padx=20, variable=reliabilityType, value=1)
+radio_same.pack()
+radio_one = Radiobutton(frame, text="1 on 1                ", padx=20, variable=reliabilityType, value=2)
+radio_one.pack()
 frame.pack()
 
 # Reliability Percentage

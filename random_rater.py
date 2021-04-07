@@ -31,7 +31,8 @@ def randomize(event=None):
     studyID_list = []
     with open(pathEntry.get(), 'r') as f:
         reader = csv.reader(f, delimiter=',')  # reads in .csv file
-        next(reader)
+        if header.get() == True:
+            next(reader)
         for rowDict in reader:
             studyID = rowDict[0].upper()  # if the StudyID is typed in lowercase, this changes it to uppercase
             studyID_list.append(studyID)
@@ -271,15 +272,16 @@ def get_about():
         Created date: 12/9/2019
 
         Random Raters
-        version: 1.0''')
+        version: 1.1''')
 
 
 # Creates main window
 root = Tk()
-root.title('Random Raters v. 1.0')
-root.geometry('450x450+500+200')
+root.title('Random Raters v. 1.1')
+root.geometry('450x500+500+200')
 
 studyID_path = StringVar()
+header = BooleanVar()
 rater1 = IntVar()
 rater2 = IntVar()
 rater3 = IntVar()
@@ -306,6 +308,12 @@ pathEntry = Entry(frame, textvariable=studyID_path)
 pathEntry.pack(side=LEFT)
 getDataButton1 = Button(frame, text='Browse...', command=get_studyID_list, width=10)
 getDataButton1.pack(side=LEFT)
+frame.pack()
+
+# Header checkbox
+frame = Frame(root)
+headerCheckBut = Checkbutton(frame, text='Header in first row?', variable=header)
+headerCheckBut.pack()
 frame.pack()
 
 # Rater1

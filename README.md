@@ -9,3 +9,4 @@ Each list should be unique and not repeat any StudyIDs.
 * Continue to randomly assign IDs till the end of the file even if the number of IDs in each list is uneven.
 * Make sure that an ID is unique across all lists.
 
+<img src="images/RandomRaters_image.PNG" width="400">
